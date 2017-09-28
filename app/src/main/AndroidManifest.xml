@@ -7,16 +7,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <meta-data
-        android:name="com.baidu.speech.APP_ID"
-        android:value="7999365" />
-    <meta-data
-        android:name="com.baidu.speech.API_KEY"
-        android:value="M9rBWpOdqWWs72WwMDrjvH5Srtmb8Vbc" />
-    <meta-data
-        android:name="com.baidu.speech.SECRET_KEY"
-        android:value="I8Uc8ghUg4IrltZKE835KNgrYZCDy0F2" />
-    <service android:name="com.baidu.speech.VoiceRecognitionService" android:exported="false" />
+
+
 
     <application
         android:allowBackup="true"
@@ -32,6 +24,137 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <meta-data
+            android:name="com.baidu.speech.APP_ID"
+            android:value="10198611" />
+        <!-- 再次重复！！填写APP_ID 时请检查在官网的该应用内是否设置了包名。否则会导致唤醒词及离线功能无法使用。
+         本demo的包名是com.baidu.speech.recognizerdemo，在build.gradle文件中查看。 -->
+        <!-- 正式发布时，请替换成您自己的appId 本demo的appId会不定时下线 -->
+        <meta-data
+            android:name="com.baidu.speech.API_KEY"
+            android:value="U7WfhvQeUG9oun37jUUGENCr" />
+        <meta-data
+            android:name="com.baidu.speech.SECRET_KEY"
+            android:value="8e4879bfba2a7b3c4f85925fcc765dcf" />
+        <service
+            android:name="com.baidu.speech.VoiceRecognitionService"
+            android:exported="false" />
+
+        <activity
+            android:name=".OnlineActivity"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="在线识别"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name=".ActivityMain"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.DeviceDefault.Light">
+
+        </activity>
+        <activity
+            android:name=".ActivityOnline"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="在线识别"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityOffline"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="离线语法识别"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityNlu"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="语义解析（本地和在线）"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityAllRecog"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="全部识别功能"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityWakeUp"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="唤醒词"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mini.ActivityMiniRecog"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="精简版识别"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".mini.ActivityMiniWakeUp"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="精简版唤醒词"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.baidutest.passq.baidutest.intent.category.SAMPLE_CODE" />
+
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".setting.OnlineSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="在线识别设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".setting.OfflineSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="离线语法设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".setting.NluSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="语义设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".setting.AllSetting"
+            android:configChanges="orientation|keyboardHidden|screenLayout"
+            android:label="全部识别设置"
+            android:theme="@android:style/Theme.DeviceDefault.Light"
+            android:screenOrientation="portrait"></activity>
+
     </application>
 
 </manifest>

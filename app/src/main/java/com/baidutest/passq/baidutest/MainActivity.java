@@ -33,7 +33,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,EventListener {
     TextView textView;
     Button button;
-    private EventManager asr ;
+//    private EventManager asr ;
     private boolean logTime = true;
     private boolean enableOffline = false;
 
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initView();
-        asr = EventManagerFactory.create(this, "asr");
-        asr.registerListener(this); //  EventListener 中 onEvent方法
+//        asr = EventManagerFactory.create(this, "asr");
+//        asr.registerListener(this); //  EventListener 中 onEvent方法
 
     }
 
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           params.put(SpeechConstant.PROP ,20000);
         String json = null; //可以替换成自己的json
         json = new JSONObject(params).toString(); // 这里可以替换成你需要测试的json
-        asr.send(event, json, null, 0, 0);
+//        asr.send(event, json, null, 0, 0);
         //unloadOfflineEngine(); //测试离线语法开启
         printLog("输入参数：" + json);
     }
@@ -113,7 +113,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 if(isAllGranted){
                     Toast.makeText(MainActivity.this,"权限授予完毕!",Toast.LENGTH_LONG).show();
-                    start();
+                    Intent  intent = new Intent();
+                    intent.setClass(MainActivity.this,OnlineActivity.class);
+                    startActivity(intent);
                     return;
                 }
                 /**
@@ -223,14 +225,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         printLog(logTxt);
     }
 
-    private void stop() {
-        asr.send(SpeechConstant.ASR_STOP, null, null, 0, 0); //
-    }
+
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        asr.send(SpeechConstant.ASR_CANCEL, "{}", null, 0, 0);
+//        asr.send(SpeechConstant.ASR_CANCEL, "{}", null, 0, 0);
         if (enableOffline) {
 //            unloadOfflineEngine(); //测试离线语法请开启, 测试 ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH 参数时开启
         }
